@@ -11,4 +11,6 @@ public interface UserDao {
 
 	String getSecurityPw(String id);
 
+	boolean join(UserDto uDto);
+
 }

@@ -6,21 +6,21 @@
 <div class="container">
 <h2>회원가입</h2>
 <form action="/join" method="post">
-  <div class="form-group">
-    <label for="email">UserName :</label>
-    <input type="text" class="form-control" placeholder="Enter UserName" id="UserName">
-  </div>
-  
     <div class="form-group">
     <label for="email">Email :</label>
-    <input type="email" class="form-control" placeholder="Enter email" id="email">
+    <input type="email" class="form-control" placeholder="Enter email" id="email" name="u_id">
   </div>
   
   <div class="form-group">
     <label for="pwd">Password :</label>
-    <input type="password" class="form-control" placeholder="Enter password" id="pwd">
+    <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="u_pw">
   </div>
 
+  <div class="form-group">
+    <label for="name">UserName :</label>
+    <input type="text" class="form-control" placeholder="Enter UserName" id="UserName" name="u_name">
+  </div>
+  
   <button type="submit" class="btn btn-primary">회원가입 완료</button>
 </form>
 </div>

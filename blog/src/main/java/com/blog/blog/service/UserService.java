@@ -21,7 +21,7 @@ public class UserService {
 	public UserDto login(HashMap<String, String> user) {
 		String encodePw = uDao.getSecurityPw(user.get("u_id"));
 		log.info("====encoPwd:{}", encodePw);
-		BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder();
+		BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder(); // 비밀번호 암호화
 		
 		if(encodePw != null) {
 			log.info("=========================아이디 존재함");
@@ -31,10 +31,18 @@ public class UserService {
 				return uDao.getUserInfo(user.get("u_id"));
 			} else {
 				log.info("===================비번 오류");
+				return null;
 			}
 		} else {
 			log.info("===================아이디 오류");
 		}
 		return null;
+	}
+
+	public boolean join(UserDto uDto) {
+		BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder(); // 비밀번호 암호화
+		uDto.setU_pw(pwEncoder.encode(uDto.getU_pw()));
+		
+		return uDao.join(uDto);
 	}
 }

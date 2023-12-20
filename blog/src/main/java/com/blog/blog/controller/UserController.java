@@ -2,38 +2,41 @@ package com.blog.blog.controller;
 
 import java.util.HashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.blog.blog.dto.UserDto;
 import com.blog.blog.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
 public class UserController {
-	
-	UserService uSer;
+	@Autowired
+	private UserService uSer;
 	
 	@GetMapping("/user/loginfrm")
 	public String lofinFrm() {
-		log.info("a");
-		return "user/loginfrm";
+		log.info("==================================a");
+		return "/user/loginfrm";
 	}
 	
 	@GetMapping("/user/joinfrm")
 	public String joinFrm() {
-		log.info("b");
-		return "user/joinfrm";
+		log.info("==================================b");
+		return "/user/joinfrm";
 	}
 	
 	@PostMapping("/login")
-	public String login(HashMap<String, String> user, Model model,HttpSession session, RedirectAttributes rttr) {
+	public String login(HashMap<String, String> user, Model model, HttpSession session, RedirectAttributes rttr) {
 		UserDto uDto = uSer.login(user);
 		log.info("ud{} : " + uDto);
 		
@@ -52,8 +55,20 @@ public class UserController {
 	}
 	
 	@PostMapping("/join")
-	public String join() {
+	public String join(UserDto uDto, Model m, RedirectAttributes rttr) {
+		log.info("ud {} : " + uDto);
+		boolean result = uSer.join(uDto);
 		
-		return "redirect:/";
+		if(result) {
+			rttr.addFlashAttribute("msg", "가입에 성공하셨습니다!");
+			log.info("asdf");
+			return "redirect:/";
+		} else {
+			m.addAttribute("msg", "가입에 실패하셨습니다.");
+			
+			return "redirect:/user/joinfrm";
+		}
 	}
+	
+	
 }
