@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.blog.blog.dto.UserDto;
@@ -36,7 +37,8 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public String login(HashMap<String, String> user, Model model, HttpSession session, RedirectAttributes rttr) {
+	public String login(UserDto user, Model model, HttpSession session, RedirectAttributes rttr) {
+		// user = HashMap 사용시 어노테이션 @RequestParam 사용하자
 		UserDto uDto = uSer.login(user);
 		log.info("ud{} : " + uDto);
 		

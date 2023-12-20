@@ -5,6 +5,10 @@
 
 <mapper namespace="com.blog.blog.dao.UserDao">
 
+	<select id="login" parameterType="HashMap" resultType="boolean">
+		select count(*) from user where u_id=#{u_id} and u_pw=#{u_pw}
+	</select>
+
 	<select id="getSecurityPw" parameterType="String" resultType="String">
 		select u_pw from user where u_id = #{u_id}
 	</select>
