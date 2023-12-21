@@ -26,12 +26,4 @@
   </form>
 </div>
 
-<script type="text/javascript">
-let m = '${msg}'
-
-if(m != '') {
-	alert(m)
-}
-</script>
-
 <%@include file = "../layout/footer.jsp" %>

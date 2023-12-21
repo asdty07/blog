@@ -53,7 +53,6 @@ public class UserController {
 			
 			return "redirect:/user/loginfrm";
 		}
-		
 	}
 	
 	@PostMapping("/join")
@@ -71,6 +70,5 @@ public class UserController {
 			return "redirect:/user/joinfrm";
 		}
 	}
-	
 	
 }
