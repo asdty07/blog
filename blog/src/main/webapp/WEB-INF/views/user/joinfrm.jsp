@@ -25,5 +25,10 @@
 </form>
 </div>
 
+<script>
+    const uDto = ${uDto};
+</script>
+
+<script type="text/javascript" src="js/user/user.js"></script>
 
 <%@include file = "../layout/footer.jsp" %>

@@ -71,4 +71,45 @@ public class UserController {
 		}
 	}
 	
+	@GetMapping("/user/logout")
+	public String logout(HttpSession session) {
+	    session.invalidate();
+	    log.info("User logged out successfully.");
+	    return "redirect:/";
+	}
+
+
+//	@GetMapping("/user/profile")
+//	public String profile(@RequestParam String userId, Model m, RedirectAttributes rttr) {
+// 		// GetMapping으로 인해 서버로 정보를 보내면 url에 정보가 다 들어남.
+//		log.info("userId :{}" + userId);
+//		m.addAttribute("userId", userId);
+//		return "/profile/userProfile";
+//	}
+	
+//	@PostMapping("/user/profile")
+//	public String profile(@RequestParam String userId, Model m, RedirectAttributes rttr) {
+// 		// form태그와 hidden태그를 사용해 PostMapping으로 받아 url에 정보가 들어나는걸 방지함
+//	    log.info("userId: {}", userId);
+//	    m.addAttribute("userId", userId);
+//	    return "/profile/userProfile";
+//	}
+
+	@GetMapping("/user/profile")
+	public String profile(Model m, RedirectAttributes rttr, HttpSession session) {
+		// 세션에 id를 저장하고 저장한 id를 서버에서 가져와 사용함.
+	    UserDto uDto = (UserDto) session.getAttribute("uDto");
+	    if (uDto != null) {
+	        String userId = uDto.getU_id();
+	        log.info("userId: {}", userId);
+//	        m.addAttribute("" , "");
+	        m.addAttribute("userId", userId);
+	        return "/profile/userProfile";
+	    } else {
+	        // 세션이 만료되었거나 로그인되지 않은 경우 처리
+	        // ...
+	        return "redirect:/login";
+	    }
+	}
+
 }

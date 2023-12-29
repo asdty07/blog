@@ -1,7 +1,5 @@
 package com.blog.blog.service;
 
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -9,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.blog.blog.dao.UserDao;
 import com.blog.blog.dto.UserDto;
 
-import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -18,10 +15,9 @@ import lombok.extern.slf4j.Slf4j;
 public class UserService {
 	@Autowired
 	private UserDao uDao;
-	
+
 //	@Transactional : 에러 발생 시 DB에 insert, update, delete등을 롤백시키고, 에러가 안나오면 commit을 한다
 	public UserDto login(UserDto user) {
-		
 		String encodePw = uDao.getSecurityPw(user.getU_id());
 		log.info("====encodePw:{}", encodePw);
 		BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder(); // 비밀번호 암호화
