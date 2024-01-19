@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+.content-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.content-container p {
+  margin-bottom: 10px;
+}
+
+.content-container hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
