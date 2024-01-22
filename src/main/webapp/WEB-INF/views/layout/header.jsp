@@ -27,19 +27,19 @@
 	      <li class="nav-item">
 	        <a class="nav-link" href="user/loginfrm" id="login">로그인</a>
 	      </li>
-      </sec:authorize>
+      	</sec:authorize>
       
-      <sec:authorize access="isAnonymous()">
-	      <li class="nav-item">
-	        <a class="nav-link" href="user/joinfrm" id="join">회원가입</a>
-	      </li>
-      </sec:authorize>
+      	<sec:authorize access="isAnonymous()">
+	      	<li class="nav-item">
+	        	<a class="nav-link" href="user/joinfrm" id="join">회원가입</a>
+	      	</li>
+      	</sec:authorize>
       
-      <sec:authorize access="isAuthenticated()">
-	      <li class="nav-item">
-	        <a class="nav-link" href="user/logout" id="logout">로그아웃</a>
-	      </li>
-      </sec:authorize>
+      	<sec:authorize access="isAuthenticated()">
+	    	  <li class="nav-item">
+	       	 	<a class="nav-link" href="user/logout" id="logout">로그아웃</a>
+	     	 </li>
+      	</sec:authorize>
 
       <li class="nav-item">
         <a class="nav-link" href="/user/board" id="board">게시판 작성</a>

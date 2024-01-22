@@ -15,6 +15,7 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 public class BoardDto {
 	private int b_num;
+	private String b_name;
 	private String b_title;
 	private String b_content;
 	private Date b_date;

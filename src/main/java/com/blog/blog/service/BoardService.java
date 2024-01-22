@@ -28,4 +28,9 @@ public class BoardService {
 		
 		return bDao.boardDtail(bNum);
 	}
+
+	public boolean boardWrite(BoardDto bDto) {
+		
+		return bDao.boardWrite(bDto);
+	}
 }

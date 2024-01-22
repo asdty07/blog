@@ -15,4 +15,6 @@ public interface BoardDao {
 
 	BoardDto boardDtail(int bNum);
 
+	boolean boardWrite(BoardDto bDto);
+
 }

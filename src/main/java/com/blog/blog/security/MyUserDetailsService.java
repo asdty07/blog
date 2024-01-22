@@ -34,6 +34,7 @@ public class MyUserDetailsService implements UserDetailsService {
 		s.setAttribute("name", mb.getU_name());
 		
 		log.info("======member:{}",mb);
+		
 		if(mb==null) {
 			//로그인실패시 예외를 로그인실패핸들러에 던짐
 			throw new UsernameNotFoundException(u_id + " 사용자를 찾을 수 없습니다");

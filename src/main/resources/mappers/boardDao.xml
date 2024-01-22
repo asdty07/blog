@@ -9,4 +9,8 @@
     <select id="boardDtail">
     	select * from board where b_num = #{bNum}
     </select>
+    
+    <insert id="boardWrite">
+    	insert into board values(#{b_num}, #{b_name}, #{b_title}, #{b_content}, #{b_date})
+    </insert>
 </mapper>
